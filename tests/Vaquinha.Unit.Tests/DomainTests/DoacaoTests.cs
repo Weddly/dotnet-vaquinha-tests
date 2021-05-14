@@ -33,6 +33,7 @@ namespace Vaquinha.Unit.Tests.DomainTests
             var valido = doacao.Valido();
 
             // Assert
+            // Assert.True(valido); // O mesmo da linha inferior mas sem Fluent Assertions
             valido.Should().BeTrue(because: "os campos foram preenchidos corretamente");
             doacao.ErrorMessages.Should().BeEmpty();
         }
@@ -90,7 +91,7 @@ namespace Vaquinha.Unit.Tests.DomainTests
         public void Doacao_ValoresDoacaoMaiorLimite_DoacaoInvalida(double valorDoacao)
         {
             // Arrange
-            const bool EXCEDER_MAX_VALOR_DOACAO = true;
+            // const bool EXCEDER_MAX_VALOR_DOACAO = true;
             var doacao = _doacaoFixture.DoacaoValida(false, valorDoacao);
             doacao.AdicionarEnderecoCobranca(_enderecoFixture.EnderecoValido());
             doacao.AdicionarFormaPagamento(_cartaoCreditoFixture.CartaoCreditoValido());
